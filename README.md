@@ -10,6 +10,7 @@ See [AGENTS.md](AGENTS.md) for what each one does and when it fires.
 
 ```
 skills/            canonical source — edit here
+agents/            subagent definitions — REQUIRED, not optional (see below)
 .claude/skills/    mirror, auto-loaded by Claude Code
 .agents/skills/    mirror, read by agents following the .agents convention
 .cursor/skills/    mirror, read by Cursor
@@ -17,6 +18,30 @@ AGENTS.md          index — how Antigravity and other AGENTS.md readers load th
 ```
 
 The three mirrors are copies of `skills/`. After editing `skills/`, run `./sync.sh` to refresh them.
+
+## agents/ — required
+
+`bulletproof` spawns `plan-reviewer`. `warcry` spawns `warcry-scout`, `warcry-judge`, and
+`warcry-premortem`. These live in `~/.claude/agents/`, not in the skill folders, and the skills fail at
+spawn time without them. Both installers copy them.
+
+They are also where **model tier** is set, because frontmatter binds and prose does not:
+
+| Agent | Model | Why |
+|---|---|---|
+| `warcry-scout` | `sonnet` | Retrieval and enumeration — errors show up as visibly thin briefs |
+| `warcry-judge` | `sonnet` | Scores against criteria that are already written down |
+| `warcry-premortem` | *unpinned* → session model | Adversarial generation; degrades into plausible slop on a cheaper tier |
+| `plan-reviewer` | `opus` | The approval gate |
+
+Unpinned subagents inherit the session model. `katana`'s body agents are deliberately left unpinned —
+they write code that gets merged, and a cheap coder costs the savings back in the verify-and-fix loop.
+
+## Invocation is manual
+
+Every skill is explicit-invocation only, enforced in each `description`. Nothing here fires because a
+request merely resembles what it does. `warcry` and `katana` spawn parallel fleets and cost real money
+per run — they wait to be asked.
 
 ## Install
 

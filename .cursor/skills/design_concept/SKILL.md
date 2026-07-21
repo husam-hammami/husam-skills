@@ -3,8 +3,12 @@ name: design_concept
 description: >-
   Concept Lab — Invent original, defensible, world-class UI/UX concepts; compile concise prompts for high-quality mockups;
   critique or refine designs against a numeric craft rubric — without drifting into generic dashboards, copying
-  references, or leaving the dead voids / wrong proportions AI design is prone to. Use for new screens, redesigns,
-  product visual direction, mockup prompts, concept exploration, or evaluating generated UI. Designs the LOOK
+  references, or leaving the dead voids / wrong proportions AI design is prone to.
+  EXPLICIT INVOCATION ONLY — fires when the user types `/design_concept`, says "daedalus", or asks for a
+  concept / mockup prompt / design critique by name. Do NOT auto-invoke it just because a task touches UI,
+  a screen, or styling — build the UI directly instead. Its `invent-army` divergence mode stays opt-in.
+  Applies to new screens, redesigns, product visual direction, mockup prompts, concept exploration, and
+  evaluating generated UI. Designs the LOOK
   (structure/interaction/motion); hand copy to `design_copy`. Its approved output feeds a `/warcry` implementation plan — never `/katana` directly (design needs rounds of your input + mockups first).
   Solo by default; optional divergence-army on request. The design leg of the suite.
 ---

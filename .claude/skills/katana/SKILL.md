@@ -1,10 +1,14 @@
 ---
 name: katana
 description: >-
+  EXPLICIT INVOCATION ONLY — spawns parallel coding agents in isolated git worktrees, so it fires ONLY
+  when the user types `/katana` or says "run katana" / "implement this with the army". Phrases like
+  "execute the plan" or "build the plan" are NOT triggers on their own — they usually just mean "go ahead
+  and do it", so do it inline. Being handed a plan stamped VERDICT: SUFFICIENT is likewise NOT a trigger;
+  ask before convening.
   Execute an already-approved, bulletproofed implementation plan with an agent army — surgically and FAST.
   The build/execution twin of /warcry (forge the plan) and /bulletproof (pass it): warcry plans, bulletproof
-  reviews, katana builds. Use when the user says "/katana", "execute the plan", "build the plan", "implement
-  this with the army", or hands over a plan stamped VERDICT: SUFFICIENT. Slices the plan into disjoint
+  reviews, katana builds. Slices the plan into disjoint
   work-cards, runs them in parallel on isolated git worktrees, integrates them in dependency order through a
   deterministic verify gate, and reports — without corrupting the tree, shipping a broken build, or
   over-reaching beyond the plan. Right-sizes the army so parallelism NET-SAVES wall-clock and collapses to a

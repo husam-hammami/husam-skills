@@ -1,9 +1,12 @@
 ---
 name: eagleye
 description: >-
-  Objective mid-session trajectory audit — the circuit breaker for rabbit holes. Use when the user (or you)
-  suspect the session has gone off track: "/eagleye", "zoom out", "are we in a rabbit hole", "are we on the
-  right track", "step back", "are we lost". It reconstructs the ORIGINAL objective from the first user messages,
+  EXPLICIT INVOCATION ONLY — fires when the USER asks for a trajectory check: `/eagleye`, "zoom out",
+  "are we in a rabbit hole", "are we on the right track", "step back", "are we lost". Do NOT self-invoke
+  it because you suspect drift; if you think the session has gone sideways, say so in one line and let
+  the user call it. Never run it on a schedule or reflexively — a recurring audit is its own rabbit hole.
+  Objective mid-session trajectory audit — the circuit breaker for rabbit holes.
+  It reconstructs the ORIGINAL objective from the first user messages,
   builds a neutral facts-and-quotes dossier (verbatim ask + raw git + failures + scope-adds), and has FRESH
   agents that did not do the work judge drift cold — returning a verdict (ON TRACK→CONTINUE / DRIFTING→CORRECT /
   LOST→RESET) with the gap, the fork where drift began, and the fastest correct path from here. The trajectory
@@ -142,8 +145,8 @@ outcome — suspicion breaks *ties*, it does not manufacture drift where signals
 `/eagleye` every 15 minutes become its own rabbit hole.
 
 ## Note
-Family: **/warcry (plan) → /bulletproof (review plan) → /strike (build) — and /eagleye when execution may have
-gone sideways.** (build leg is `/katana`.) eagleye audits the trajectory and, on RESET, kicks back to
+Family: **/warcry (plan) → /bulletproof (review plan) → /katana (build) — and /eagleye when execution may
+have gone sideways.** eagleye audits the trajectory and, on RESET, kicks back to
 `/checkpoint` then `/warcry`. It
 reuses session-transcript + git as primary sources and hands off to `/investigate` (debug) and `/warcry`
 (re-plan) rather than doing them. Architecture + the anti-self-deception rules were set by a 6-agent design

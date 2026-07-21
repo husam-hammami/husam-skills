@@ -1,6 +1,10 @@
 ---
 name: grill-with-docs
-description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise.
+description: >-
+  EXPLICIT INVOCATION ONLY — fires when the user types `/grill-with-docs` or asks to be grilled on a plan.
+  Do NOT auto-invoke it whenever a plan or documentation is in play; it is a long interactive interview.
+  Grilling session that challenges your plan against the existing domain model, sharpens terminology, and
+  updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise.
 ---
 
 <what-to-do>

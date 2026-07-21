@@ -1,10 +1,13 @@
 ---
 name: warcry
 description: >-
+  EXPLICIT INVOCATION ONLY — spawns a paid multi-agent fan-out, so it fires ONLY when the user types
+  `/warcry` or says "sound the warcry" / "convene the army" / "think together about a plan". NEVER
+  auto-invoke it because a request merely involves planning, designing, or thinking through a feature —
+  plan those inline instead. If warcry looks warranted but was not asked for, say so in one line and let
+  the user call it.
   Convene an agent army to investigate, debate, and FORGE a bulletproof plan for a NEW feature — the
-  generative counterpart to /bulletproof (which only reviews a plan that already exists). Use when the user
-  says "/warcry", "sound the warcry", "convene the army", "think together about a plan", or asks to design/plan
-  a new feature from a rough idea by spawning multiple agents to research and pressure-test it. The orchestrator
+  generative counterpart to /bulletproof (which only reviews a plan that already exists). The orchestrator
   frames the mission, fans out read-only specialist scouts in parallel, synthesizes distinct candidate
   approaches, runs a judge/adversarial panel to pick one, authors the plan, then hands it to the `bulletproof`
   reviewer to validate. It produces a reviewed PLAN ONLY and does NOT implement — building the plan is a
@@ -57,9 +60,24 @@ Write a tight mission brief. This is the shared context every scout and judge re
   Otherwise state the assumption and proceed — do not poll.
 
 ## Phase 1 — Deploy the investigators (parallel fan-out, READ-ONLY)
-Spawn the scouts as `Explore` agents (read-only → parallel-safe, no file conflicts) **in a single message
-with multiple Agent calls** so they run concurrently. Give each the Phase-0 brief + its lens + the return
-schema. Pick the lenses that fit — running a lens with nothing to find is noise, not thoroughness.
+
+**Declare the roster BEFORE spawning anyone.** Print the scout list and one clause per scout on what it
+will find that the others won't. If you cannot justify a scout in one clause, cut it. If the roster is
+1–2 scouts, skip the fan-out and investigate inline — the army has to beat you thinking, and at that
+width it doesn't. This declaration is an output artifact, not a private check: the user sees the roster
+and its cost before it is spent.
+
+Spawn the scouts **in a single message with multiple Agent calls** so they run concurrently, using these
+`subagent_type`s (they carry the model tier and the return schema):
+
+| Use this agent | For | Tier |
+|---|---|---|
+| `warcry-scout` | prior-art · cartography · feasibility · user & workflow · data/integration | sonnet — retrieval |
+| `warcry-premortem` | the pre-mortem lens ONLY | session model — adversarial generation |
+
+Never route the pre-mortem through `warcry-scout`. Retrieval degrades visibly on a cheaper model; failure
+imagination degrades into generic slop that reads fine. Give each agent the Phase-0 brief + its lens.
+Pick the lenses that fit — running a lens with nothing to find is noise, not thoroughness.
 
 | Scout | Lens | Skip when |
 |---|---|---|
@@ -83,9 +101,10 @@ shades of one. Each: its core bet, its strengths, its top risk, and which findin
 approach is the clear obvious winner, say so and skip straight to Phase 4 — do not manufacture rivals.
 
 ## Phase 3 — Think together: the debate panel (parallel)
-This is the "investigate and think together" the user asked for. Spawn judges concurrently (read-only `Plan`
-or `general-purpose` agents), each scoring all candidates against the Phase-0 success criteria + risk, and
-returning a ranked verdict **with reasoning**:
+This is the "investigate and think together" the user asked for. Spawn judges concurrently as
+`warcry-judge` agents (read-only, sonnet — they score against stated criteria, they don't design), each
+scoring all candidates against the Phase-0 success criteria + risk, and returning a ranked verdict
+**with reasoning**:
 - **Default:** 1 synthesis + a 3-judge panel.
 - **Close call:** add a champion + skeptic per leading approach (one argues it's the best, one tries to break
   it) so the decision survives the strongest objection.

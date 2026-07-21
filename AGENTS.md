@@ -24,9 +24,23 @@ design_concept ──▶ warcry ──▶ bulletproof ──▶ katana ──▶
 | **design_copy** | `/sincere`, "humanise the copy", "fix the UX writing" | Rewrites UI display strings to sound human. Never touches code, keys, enums, or clinical/legal terms. |
 | **grill-with-docs** | "grill me on this plan", challenge a plan against the domain model | Relentless one-question-at-a-time interview that sharpens terminology and updates `CONTEXT.md` / ADRs inline. |
 
+## Invocation is manual — this is the cost gate
+
+**Every skill here is EXPLICIT-INVOCATION ONLY.** Fire one only when the user types its slash command or
+names it. Do **not** infer an invocation because a request merely resembles what a skill does — a request
+to plan a feature is not `/warcry`, "build the plan" is not `/katana`, and a task involving UI is not
+`/design_concept`. In every such case, just do the work inline.
+
+`warcry` and `katana` spawn parallel subagent fleets and cost real money per run. If one of them looks
+genuinely warranted and the user did not ask, **say so in one line and let them decide.** Never
+self-invoke `eagleye` on suspicion of drift, and never run it on a schedule.
+
 ## Rules that hold across all of them
 
 - **Read the whole SKILL.md before acting.** These are procedures, not summaries.
+- **`agents/` is required, not optional.** `bulletproof` spawns `plan-reviewer`; `warcry` spawns
+  `warcry-scout`, `warcry-judge`, and `warcry-premortem`. Install those alongside the skills or the
+  fan-out skills fail at spawn time.
 - `warcry`, `bulletproof`, and `eagleye` are **read-only** — they plan, judge, and audit; they never edit.
 - `katana` is the only one that writes code, and only from a plan already stamped `SUFFICIENT`.
 - Never skip the gate: `design_concept` → `warcry` → `bulletproof` → `katana`. Design does not hand to build.

@@ -1,6 +1,14 @@
 ---
 name: design-with-product-dna
-description: Invent, critique, refine, and implement distinctive premium UI/UX that preserves an existing product's design DNA without copying its screens or recycling prior concepts. Use for new or redesigned web apps, mobile apps, dashboards, portals, trackers, enterprise tools, consumer products, design systems, UI mockups, visual artifacts, interaction concepts, responsive states, motion direction, and production implementation when coherence and screen-level originality both matter.
+description: >-
+  EXPLICIT INVOCATION ONLY — fires when the user types `/design-with-product-dna` or asks by name for
+  design work that must preserve an existing product's DNA. Do NOT auto-invoke it because a task involves
+  a web app, dashboard, portal, component, or any UI surface — implement those directly.
+  Invent, critique, refine, and implement distinctive premium UI/UX that preserves an existing product's
+  design DNA without copying its screens or recycling prior concepts. Covers new or redesigned web apps,
+  mobile apps, dashboards, portals, trackers, enterprise tools, consumer products, design systems, UI
+  mockups, visual artifacts, interaction concepts, responsive states, motion direction, and production
+  implementation when coherence and screen-level originality both matter.
 ---
 
 # Design With Product DNA
