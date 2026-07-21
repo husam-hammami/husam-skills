@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design With Product DNA"
+  short_description: "Invent coherent UI without repeating prior screens"
+  default_prompt: "Use $design-with-product-dna to create a distinctive UI/UX concept that preserves the product system without copying existing pages."

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Creative UI Director"
+  short_description: "Invent original UI concepts and mockup prompts"
+  default_prompt: "Use $creative-ui-director to redesign this screen with an original concept and produce the optimal first-mockup prompt."
+policy:
+  allow_implicit_invocation: true
