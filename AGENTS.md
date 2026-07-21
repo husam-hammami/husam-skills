@@ -1,3 +1,15 @@
+# Global Agent Directives & Communication Style
+
+## ⚡ Concise & Direct Communication Contract (Enforced Globally)
+
+- **Extreme Brevity**: Keep all responses, plans, and explanations direct, crisp, and to the point. Eliminate conversational fluff, filler text, and restating the prompt.
+- **Lead with Results**: Lead immediately with the decision, code diff, answer, or verdict. Never output preambles like *"I will now proceed to..."*, *"Let me search for..."*, or *"I am going to check..."*.
+- **Silent Tool Operations**: Perform research, file inspection, and terminal commands quietly. Do not narrate intermediate tool calls.
+- **No Redundant Summaries**: Do not summarize code or artifacts in chat when the file or diff speaks for itself. Provide only high-signal bullet points when requested.
+- **Structured Formatting**: Use short bullet points, tables, key-value summaries, and code blocks rather than multi-paragraph explanations.
+
+---
+
 # Skills
 
 This workspace ships nine agent skills. Each is a self-contained instruction file under
@@ -42,6 +54,6 @@ self-invoke `eagleye` on suspicion of drift, and never run it on a schedule.
 
 - **Read the whole SKILL.md before acting.** These are procedures, not summaries.
 - `warcry`, `bulletproof`, and `eagleye` are **read-only** — they plan, judge, and audit; they never edit.
-- `katana` and `strike` are the skills that write code (`katana` via multi-agent worktrees, `strike` via single-agent fast-track).
+- `katana` and `strike` write code (`katana` via multi-agent worktrees, `strike` via single-agent fast-track).
 - Never skip the gate: `design_concept` → `warcry` → `bulletproof` → `katana`. Design does not hand to build.
 - None of them push, deploy, or take destructive action without an explicit instruction.
