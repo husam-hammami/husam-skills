@@ -20,7 +20,7 @@
 
 # Skills
 
-This workspace ships thirteen agent skills. Each is a self-contained instruction file under
+This workspace ships fourteen agent skills. Each is a self-contained instruction file under
 `skills/<name>/SKILL.md`. **When a trigger below matches the user's request, read that
 skill's `SKILL.md` in full and follow it as binding instructions before doing the work.**
 Some skills have a `references/` folder — read those files when the SKILL.md points at them.
@@ -50,6 +50,7 @@ design_concept ──▶ warcry ──▶ bulletproof ──▶ katana ──▶
 | **security_audit** | `/security_audit`, "security audit", "scan for vulnerabilities" | Adversarial security vulnerability gate checking OWASP Top 10, secret leaks, and auth bypasses. |
 | **db_sentinel** | `/db_sentinel`, "check migration", "database audit" | Zero-downtime database schema and migration safety sentinel. |
 | **browser_qa** | `/browser_qa`, "browser test", "visual QA", "e2e audit" | Automated E2E browser testing, visual regression, accessibility (a11y), and DOM state verification. |
+| **memory_sentinel** | `/memory_sentinel`, "maintain memory", "prune rules", "update CLAUDE.md" | Context & Memory Sentinel. Automatically updates, prunes, and optimizes project memory files to maximize alignment and minimize token consumption. |
 
 ## Invocation is manual — this is the cost gate
 
