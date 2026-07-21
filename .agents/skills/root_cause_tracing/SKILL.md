@@ -1,6 +1,9 @@
 ---
 name: root_cause_tracing
-description: Surgical debugging and root-cause tracing protocol. Prevents superficial symptom-masking (swallowing exceptions, returning dummy fallbacks, deleting failing assertions). Forces empirical un-truncated log extraction, upstream state tracing, minimal reproduction tests, and verified root-cause resolution. Use when the user says "/root_cause_tracing", "debug this failure", "trace root cause", or asks to diagnose a runtime error/bug.
+description: >-
+  EXPLICIT INVOCATION ONLY — fires ONLY when the user explicitly types "/root_cause_tracing" or says
+  "debug this failure" / "trace root cause" by name. Do NOT auto-invoke it when a user merely asks to fix a bug or run a test.
+  Surgical debugging and root-cause tracing protocol. Prevents superficial symptom-masking (swallowing exceptions, returning dummy fallbacks, deleting failing assertions). Forces empirical un-truncated log extraction, upstream state tracing, minimal reproduction tests, and verified root-cause resolution.
 ---
 
 # Root Cause Tracing — Surgical Debugging Protocol (manual)

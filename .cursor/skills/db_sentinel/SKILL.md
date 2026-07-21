@@ -1,6 +1,9 @@
 ---
 name: db_sentinel
-description: Database schema and migration safety sentinel. Enforces zero-downtime migration patterns, table lock prevention, index coverage analysis, backward-compatible column renaming, and idempotent data backfills. Use when the user says "/db_sentinel", "check migration", "database audit", or "schema review".
+description: >-
+  EXPLICIT INVOCATION ONLY — fires ONLY when the user explicitly types "/db_sentinel" or asks by name to
+  "check migration" or "database audit". Do NOT auto-invoke it on standard SQL queries or schema edits.
+  Database schema and migration safety sentinel. Enforces zero-downtime migration patterns, table lock prevention, index coverage analysis, backward-compatible column renaming, and idempotent data backfills.
 ---
 
 # DB Sentinel — Zero-Downtime Schema & Migration Guard (manual)

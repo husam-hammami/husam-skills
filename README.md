@@ -1,8 +1,8 @@
 # husam-skills
 
-Nine agent skills: a design → plan → review → build → audit → polish pipeline (plus `/strike` fast-track).
+Fourteen agent skills: a design → plan → review → build → audit → polish pipeline (plus `/strike` fast-track & production sentinels).
 
-`strike` · `design_concept` · `design-with-product-dna` · `warcry` · `bulletproof` · `katana` · `eagleye` · `design_copy` · `grill-with-docs`
+`strike` · `design_concept` · `design-with-product-dna` · `warcry` · `bulletproof` · `katana` · `eagleye` · `design_copy` · `grill-with-docs` · `root_cause_tracing` · `security_audit` · `db_sentinel` · `browser_qa` · `memory_sentinel`
 
 See [AGENTS.md](AGENTS.md) for what each one does and when it fires.
 
@@ -37,9 +37,9 @@ They are also where **model tier** is set, because frontmatter binds and prose d
 Unpinned subagents inherit the session model. `katana`'s body agents are deliberately left unpinned —
 they write code that gets merged, and a cheap coder costs the savings back in the verify-and-fix loop.
 
-## Invocation is manual
+## Invocation is manual — this is the cost gate
 
-Every skill is explicit-invocation only, enforced in each `description`. Nothing here fires because a
+Every skill here is EXPLICIT-INVOCATION ONLY, enforced in each `description` with frontmatter gates. Nothing here fires because a
 request merely resembles what it does. `warcry` and `katana` spawn parallel fleets and cost real money
 per run — they wait to be asked. For quick single-agent execution, use `/strike`.
 
@@ -74,7 +74,7 @@ cp -r skills ~/.gemini/skills
 ./install.sh             # same, POSIX
 ```
 
-Then `/strike`, `/warcry`, `/bulletproof`, `/katana`, `/design_concept`, `/eagleye` are available as slash commands.
+Then `/strike`, `/warcry`, `/bulletproof`, `/katana`, `/design_concept`, `/eagleye`, `/memory_sentinel` are available as slash commands.
 
 ### Cursor
 

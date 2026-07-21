@@ -1,6 +1,9 @@
 ---
 name: security_audit
-description: Adversarial security and vulnerability audit gate. Scans codebase diffs and architecture for OWASP Top 10 risks, exposed secrets, auth bypasses, un-sanitized inputs, CSRF/XSS, insecure CORS, and unsafe deserialization before PR landing. Use when the user says "/security_audit", "security audit", "scan for vulnerabilities", or "check secrets".
+description: >-
+  EXPLICIT INVOCATION ONLY — fires ONLY when the user explicitly types "/security_audit" or asks by name to
+  "security audit" or "scan for vulnerabilities". Do NOT auto-invoke it on standard code modifications.
+  Adversarial security and vulnerability audit gate. Scans codebase diffs and architecture for OWASP Top 10 risks, exposed secrets, auth bypasses, un-sanitized inputs, CSRF/XSS, insecure CORS, and unsafe deserialization before PR landing.
 ---
 
 # Security Audit — Adversarial Vulnerability Gate (manual)

@@ -1,6 +1,9 @@
 ---
 name: browser_qa
-description: Automated browser QA, visual regression, and E2E verification skill. Automates Playwright/DevTools browser testing, visual alignment, DOM state checks, accessibility (a11y) audits, and slow-network/error state testing. Use when the user says "/browser_qa", "browser test", "visual QA", or "e2e audit".
+description: >-
+  EXPLICIT INVOCATION ONLY — fires ONLY when the user explicitly types "/browser_qa" or asks by name to
+  "browser test", "visual QA", or "e2e audit". Do NOT auto-invoke it on standard web layout changes.
+  Automated browser QA, visual regression, and E2E verification skill. Automates Playwright/DevTools browser testing, visual alignment, DOM state checks, accessibility (a11y) audits, and slow-network/error state testing.
 ---
 
 # Browser QA — Visual & Interaction E2E Verification (manual)

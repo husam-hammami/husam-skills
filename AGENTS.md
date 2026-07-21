@@ -20,7 +20,7 @@
 
 # Skills
 
-This workspace ships thirteen agent skills. Each is a self-contained instruction file under
+This workspace ships fourteen agent skills. Each is a self-contained instruction file under
 `skills/<name>/SKILL.md`. **When a trigger below matches the user's request, read that
 skill's `SKILL.md` in full and follow it as binding instructions before doing the work.**
 Some skills have a `references/` folder — read those files when the SKILL.md points at them.
