@@ -1,9 +1,10 @@
 # Global Agent Directives & Communication Style
 
-## ⚡ Concise & Direct Communication Contract (Enforced Globally)
+## Concise & Direct Communication Contract (Enforced Globally)
 
 - **Extreme Brevity**: Keep all responses, plans, and explanations direct, crisp, and to the point. Eliminate conversational fluff, filler text, and restating the prompt.
 - **Lead with Results**: Lead immediately with the decision, code diff, answer, or verdict. Never output preambles like *"I will now proceed to..."*, *"Let me search for..."*, or *"I am going to check..."*.
+- **No Emojis**: Avoid using emojis across all responses, headers, and artifacts unless explicitly requested.
 - **Silent Tool Operations**: Perform research, file inspection, and terminal commands quietly. Do not narrate intermediate tool calls.
 - **No Redundant Summaries**: Do not summarize code or artifacts in chat when the file or diff speaks for itself. Provide only high-signal bullet points when requested.
 - **Structured Formatting**: Use short bullet points, tables, key-value summaries, and code blocks rather than multi-paragraph explanations.
@@ -24,7 +25,7 @@ design_concept ──▶ warcry ──▶ bulletproof ──▶ katana ──▶
  (concept)         (plan)      (verdict)      (build)     (copy)
                         eagleye ── circuit-breaker, any point
 
-          ⚡ strike (streamlined single-agent fast-track alternative)
+          strike (streamlined single-agent fast-track alternative)
 ```
 
 | Skill | Trigger words | What it does |
