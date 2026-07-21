@@ -1,43 +1,54 @@
 ---
 name: memory_sentinel
-description: Context & Memory Sentinel. Automatically updates, prunes, and optimizes project memory files (CLAUDE.md, CONTEXT.md, AGENTS.md) to maximize domain alignment and minimize token consumption. Use when the user says "/memory_sentinel", "maintain memory", "prune rules", "update CLAUDE.md", "update CONTEXT.md", or when you need to clean up rules files to save tokens.
+description: Context & Memory Sentinel. Automatically unifies, prunes, and optimizes project memory files (AGENTS.md, CLAUDE.md, CONTEXT.md) to eliminate instruction drift, enforce @AGENTS.md canonical linking, and minimize token bloat. Use when the user says "/memory_sentinel", "maintain memory", "prune rules", "update CLAUDE.md", "update CONTEXT.md", or "fix memory drift".
 ---
 
-# Memory Sentinel — Project Context Maintenance & Token Optimizer (manual)
+# Memory Sentinel — Context Optimization & Anti-Drift Guard (manual)
 
-Run when reviewing or updating persistent project context files to keep them lean, up-to-date, and token-efficient: `/memory_sentinel` / `"maintain memory"` / `"prune rules"`.
-
----
-
-## ⚡ The Memory Sentinel Principles
-1. **Zero Bloat Policy**: Keep `CLAUDE.md` and `CONTEXT.md` strictly under 150–200 lines. Focus only on commands, constraints, and custom failure guards.
-2. **Remove Self-Evident Rules**: Delete standard programming conventions (e.g., "use descriptive variables", "write clean code") that modern LLMs already natively understand.
-3. **Modular Progressive Disclosure**: Keep root-level memory files focused on global facts. Move specific subdirectory rules into modular files under `.claude/rules/` or subfolder markdown files.
-4. **The Two-Strike Guard**: Only add a rule if the agent has made the same error twice in the current session. Never add preemptive hypothetical constraints.
+Run when optimizing project memory, fixing instruction drift, or pruning bloated context files: `/memory_sentinel` / `"maintain memory"` / `"fix memory drift"`.
 
 ---
 
-## 🛠️ Maintenance Execution Workflow
+## 🛑 Core Sentinel Principles
 
-### Step 1 — Audit for Bloat
-- Scan root memory files (`CLAUDE.md`, `CONTEXT.md`, `AGENTS.md`) for redundancy.
-- Strip historical background, philosophy, human-facing setup walkthroughs, and unused tool tips.
+1. **Single Source of Truth (`@AGENTS.md` Import)**:
+   - `AGENTS.md` at project root is the canonical memory file read by all agents.
+   - `CLAUDE.md` must contain a single import line: `@AGENTS.md`.
+   - Never maintain separate hand-copied duplicates in both `CLAUDE.md` and `AGENTS.md`.
 
-### Step 2 — Verify and Prune Commands
-- Check if project test, build, lint, and run commands have changed.
-- Remove deprecated scripts and update commands to their exact, most efficient invocations.
+2. **Marker-Based Safety (`AUTO-MANAGED` Blocks)**:
+   - Hand-written architectural rules, stack constraints, and safety guidelines live outside auto-managed blocks.
+   - Automated agent updates live ONLY inside designated marker blocks:
+     `<!-- AUTO-MANAGED START -->`
+     `...`
+     `<!-- AUTO-MANAGED END -->`
 
-### Step 3 — Segment Modular Rules
-- Identify rules specific to a single folder or module (e.g., testing conventions, specific API endpoints).
-- Move these rules to `.claude/rules/<module>.md` or nested `CLAUDE.md` directories to prevent them from inflating the root context.
+3. **Bloat Budget (< 100 lines / ~2-3KB max)**:
+   - Target total starting context size < 3,000 tokens.
+   - Move incident logs to `docs/INCIDENTS.md` and detailed domain docs to `docs/`.
 
-### Step 4 — Session Update Sync
-- If new environment setups or critical architectural boundaries were resolved in the current session, write them cleanly into `CONTEXT.md` (for domain glossary/contracts) or `CLAUDE.md` (for actionable workflows) in a concise key-value format.
+---
+
+## 🛠️ Execution Protocol
+
+### Step 1 — Audit & Drift Detection
+- Check project root for `CLAUDE.md`, `AGENTS.md`, `CONTEXT.md`, and `GEMINI.md`.
+- Compare `CLAUDE.md` vs `AGENTS.md`. If both exist with duplicate/diverged content, merge the content into `AGENTS.md` and replace `CLAUDE.md` with `@AGENTS.md`.
+
+### Step 2 — Structure & Bloat Trimming
+- Organize `AGENTS.md` into 4 high-signal sections:
+  1. **Core Tech Stack & Commands** (build, test, lint)
+  2. **Architectural Boundaries** (what not to break)
+  3. **Critical Conventions**
+  4. **Auto-Managed Learned Rules** (`<!-- AUTO-MANAGED -->`)
+
+### Step 3 — Verification
+- Confirm `CLAUDE.md` imports `@AGENTS.md`.
+- Verify total line count is under 100 lines.
 
 ---
 
 ## Output Contract
-Report only:
-1. **Pruning Metric**: Total lines before vs after (e.g. `240 lines -> 110 lines`).
-2. **Changes Made**: Bullet points of what was updated, removed, or modularized.
-3. **Token Savings Est.**: Rough % token savings per session turn.
+- **Memory Status**: Single-source status, total bytes, token estimate.
+- **Drift Resolved**: List of diverged files unified.
+- **Bytes Saved**: Total tokens freed from turn-zero context budget.
