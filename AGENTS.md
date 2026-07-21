@@ -9,6 +9,13 @@
 - **No Redundant Summaries**: Do not summarize code or artifacts in chat when the file or diff speaks for itself. Provide only high-signal bullet points when requested.
 - **Structured Formatting**: Use short bullet points, tables, key-value summaries, and code blocks rather than multi-paragraph explanations.
 
+## Project Context & Memory Protocol (CLAUDE.md / CONTEXT.md / AGENTS.md)
+
+- **Automatic Context Discovery**: Check for project memory files (`CLAUDE.md`, `CONTEXT.md`, or `AGENTS.md`) at the project root silently before planning or modifying code.
+- **Single-Read Efficiency**: Read project memory files once per session or slice only the required section using line numbers. Never re-read identical files repeatedly within the same session.
+- **Context Primacy**: Adhere strictly to architectural boundaries, naming conventions, test commands, and tech stack choices defined in `CLAUDE.md` / `CONTEXT.md`.
+- **Incremental Knowledge Retention**: When resolving major design decisions, new architectural patterns, or environment setups during a session, update `CLAUDE.md` / `CONTEXT.md` inline so future sessions don't re-discover facts from scratch.
+
 ---
 
 # Skills
