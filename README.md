@@ -1,8 +1,8 @@
 # husam-skills
 
-Eight agent skills: a design → plan → review → build → audit → polish pipeline.
+Nine agent skills: a design → plan → review → build → audit → polish pipeline (plus `/strike` fast-track).
 
-`design_concept` · `design-with-product-dna` · `warcry` · `bulletproof` · `katana` · `eagleye` · `design_copy` · `grill-with-docs`
+`strike` · `design_concept` · `design-with-product-dna` · `warcry` · `bulletproof` · `katana` · `eagleye` · `design_copy` · `grill-with-docs`
 
 See [AGENTS.md](AGENTS.md) for what each one does and when it fires.
 
@@ -41,14 +41,13 @@ they write code that gets merged, and a cheap coder costs the savings back in th
 
 Every skill is explicit-invocation only, enforced in each `description`. Nothing here fires because a
 request merely resembles what it does. `warcry` and `katana` spawn parallel fleets and cost real money
-per run — they wait to be asked.
+per run — they wait to be asked. For quick single-agent execution, use `/strike`.
 
 ## Install
 
 ### Antigravity
 
-Antigravity has **no native skills directory** — it loads instructions from `AGENTS.md` at the
-workspace root and from `~/.gemini/GEMINI.md` globally. Two ways in:
+Antigravity loads instructions from `AGENTS.md` at the workspace root and from `~/.gemini/GEMINI.md` globally. Two ways in:
 
 **Per workspace** — copy `AGENTS.md` and `skills/` into the project root. Antigravity reads
 `AGENTS.md` on every request; the table tells it which `SKILL.md` to open for a given trigger.
@@ -65,10 +64,6 @@ cp -r skills ~/.gemini/skills
 { echo; cat AGENTS.md | sed 's|skills/<name>/SKILL.md|~/.gemini/skills/<name>/SKILL.md|'; } >> ~/.gemini/GEMINI.md
 ```
 
-Caveat worth knowing up front: this is instruction-level loading, not a plugin API. Antigravity
-reads the index every turn and opens a `SKILL.md` when a trigger matches — reliable, but it
-depends on the model honoring the index rather than on a hard dispatch mechanism.
-
 ### Claude Code
 
 ```powershell
@@ -79,7 +74,7 @@ depends on the model honoring the index rather than on a hard dispatch mechanism
 ./install.sh             # same, POSIX
 ```
 
-Then `/warcry`, `/bulletproof`, `/katana`, `/design_concept`, `/eagleye` are available as slash commands.
+Then `/strike`, `/warcry`, `/bulletproof`, `/katana`, `/design_concept`, `/eagleye` are available as slash commands.
 
 ### Cursor
 
