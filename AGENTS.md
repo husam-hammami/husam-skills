@@ -20,7 +20,7 @@
 
 # Skills
 
-This workspace ships fourteen agent skills. Each is a self-contained instruction file under
+This workspace ships fifteen agent skills. Each is a self-contained instruction file under
 `skills/<name>/SKILL.md`. **When a trigger below matches the user's request, read that
 skill's `SKILL.md` in full and follow it as binding instructions before doing the work.**
 Some skills have a `references/` folder — read those files when the SKILL.md points at them.
@@ -51,6 +51,7 @@ design_concept ──▶ warcry ──▶ bulletproof ──▶ katana ──▶
 | **db_sentinel** | `/db_sentinel`, "check migration", "database audit" | Zero-downtime database schema and migration safety sentinel. |
 | **browser_qa** | `/browser_qa`, "browser test", "visual QA", "e2e audit" | Automated E2E browser testing, visual regression, accessibility (a11y), and DOM state verification. |
 | **memory_sentinel** | `/memory_sentinel`, "maintain memory", "prune rules", "update CLAUDE.md", "update CONTEXT.md" | Context & Memory Sentinel. Automatically updates, prunes, and optimizes project memory files (CLAUDE.md, CONTEXT.md, AGENTS.md) to maximize domain alignment and minimize token consumption. |
+| **token_optimizer** | `/token_optimizer`, "optimize tokens", "cost optimization" | Universal Token & Prompt Cache Optimizer. Implements Dynamic Context Relocation, Model Tier Routing Ladder, and Thread Cache Preservation. |
 
 ## Invocation is manual — this is the cost gate
 
