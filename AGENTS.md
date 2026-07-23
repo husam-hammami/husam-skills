@@ -71,3 +71,16 @@ self-invoke `eagleye` on suspicion of drift, and never run it on a schedule.
 - `katana` and `strike` write code (`katana` via multi-agent worktrees, `strike` via single-agent fast-track).
 - Never skip the gate: `design_concept` → `warcry` → `bulletproof` → `katana`. Design does not hand to build.
 - None of them push, deploy, or take destructive action without an explicit instruction.
+
+## Agent spend
+
+1. **Fan out to READ, never to WRITE.** Parallel agents reading disjoint sources is cheap and finds
+   things. Parallel agents producing artifacts that must agree with each other always conflict, and
+   reconciling costs more than writing it once. If two outputs must be consistent, one author writes
+   both. (Disjoint file edits that need not agree — a migration, a worktree build — are not covered
+   by this.)
+2. **Justify before spawning.** State in one line what the agent will find that you cannot find
+   yourself in two tool calls. If you can't, don't spawn.
+3. **Prefer one file to six.** If work needs a shared vocabulary, write the vocabulary first, alone,
+   before anything depends on it.
+4. **Report agent cost** when it exceeds ~200k tokens, in the same message as the result.
